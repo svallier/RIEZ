@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Génération du QR Code pour accès au site (page d'accueil)
-    const webappUrl = "https://riez-app-c7h4dph3b6h4hxec.francecentral-01.azurewebsites.net";
+    const webappUrl = "https://wonderful-rock-04872af03.3.azurestaticapps.net";
     new QRCode(document.getElementById("qrcode-home"), {
         text: webappUrl,
         width: 180,
