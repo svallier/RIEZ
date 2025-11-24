@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue à Saint-Hilaire-de-Riez</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🏖️ Votre Studio à Saint-Hilaire</div>
+        <div class="nav-links">
+            <a href="#accueil" class="nav-link active">Accueil</a>
+            <a href="#galerie" class="nav-link">Galerie</a>
+            <a href="#wifi" class="nav-link">WiFi</a>
+            <a href="#activites" class="nav-link">Activités</a>
+            <a href="#infos-pratiques" class="nav-link">Infos Pratiques</a>
+            <a href="#checkout" class="nav-link">Checkout</a>
+            <a href="#multimedia" class="nav-link">Multimédia</a>
+        </div>
+    </nav>
+
+    <!-- Section Accueil avec diaporama -->
+    <section id="accueil" class="section active">
+        <div class="hero">
+            <div class="hero-background">
+                <img src="images/photo0.jpg" alt="Vue du studio">
+            </div>
+            <div class="hero-content">
+                <h1>✨ Bienvenue ✨ <span id="guest-name"></span> </h1>
+                <p class="address">11 rue des Galées • 85270</p>
+                
+                <!-- Météo du jour -->
+                <div class="weather-widget">
+                    <div class="weather-loading">
+                        <div class="weather-spinner"></div>
+                        <p>Chargement de la météo...</p>
+                    </div>
+                    <div class="weather-content" style="display: none;">
+                        <div class="weather-icon" id="weather-icon">☀️</div>
+                        <div class="weather-info">
+                            <div class="weather-temp" id="weather-temp">--°C</div>
+                            <div class="weather-desc" id="weather-desc">--</div>
+                            <div class="weather-details">
+                                <span id="weather-wind">💨 -- km/h</span>
+                                <span id="weather-humidity">💧 --%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="welcome-divider"></div>
+                <p class="emoji-decoration">🏖️ ☀️ 🌊</p>
+                <div class="qr-code-home">
+                    <div id="qrcode-home"></div>
+                    <p class="qr-label-home">📱 Scannez pour accéder sur votre téléphone</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Galerie -->
+    <section id="galerie" class="section">
+        <div class="container">
+            <h2>📸 Galerie Photos</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800" alt="Plage de Saint-Hilaire-de-Riez">
+                    <div class="gallery-overlay">Plages à proximité</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Paysage vendéen">
+                    <div class="gallery-overlay">Paysages de Vendée</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800" alt="Coucher de soleil sur l'océan">
+                    <div class="gallery-overlay">Coucher de soleil</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?w=800" alt="Vélo sur la côte">
+                    <div class="gallery-overlay">Pistes cyclables</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800" alt="Bord de mer vendéen">
+                    <div class="gallery-overlay">Bord de mer</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800" alt="Port de pêche">
+                    <div class="gallery-overlay">Port de pêche</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo1.jpg" alt="La résidence">
+                    <div class="gallery-overlay">Votre résidence</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/photo2.jpg" alt="L'extérieur">
+                    <div class="gallery-overlay">Extérieur</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section WiFi -->
+    <section id="wifi" class="section">
+        <div class="container">
+            <h2>📶 Connexion WiFi</h2>
+            <div class="wifi-card">
+                <div class="wifi-info">
+                    <h3>Informations de connexion</h3>
+                    <div class="wifi-details">
+                        <div class="wifi-field">
+                            <span class="label">Réseau :</span>
+                            <span class="value" id="wifi-ssid">VotreWiFi</span>
+                        </div>
+                        <div class="wifi-field">
+                            <span class="label">Mot de passe :</span>
+                            <span class="value" id="wifi-password">VotreMotDePasse</span>
+                        </div>
+                    </div>
+                    <p class="wifi-instruction">Scannez le QR code avec votre téléphone pour vous connecter automatiquement</p>
+                </div>
+                <div class="qr-code-container">
+                    <div id="qrcode"></div>
+                    <p class="qr-label">Scannez pour connexion rapide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Activités -->
+    <section id="activites" class="section">
+        <div class="container">
+            <h2>🎯 Activités à Proximité</h2>
+            <div class="activities-grid">
+                <a href="https://www.google.com/maps/search/plages/@46.7167,-1.9500,13z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600') center/cover;">
+                    <div class="activity-icon">🏖️</div>
+                    <h3>Plages</h3>
+                    <p><strong>Plage de Riez</strong> - 1,5 km</p>
+                    <p>Grande plage de sable fin surveillée en saison. Idéale pour la baignade et les sports nautiques.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/mini+golf+saint+hilaire+de+riez/@46.7167,-1.9500,13z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=600') center/cover;">
+                    <div class="activity-icon">⛳</div>
+                    <h3>Mini-Golf</h3>
+                    <p><strong>Mini-Golf familial</strong> - 2 km</p>
+                    <p>Parcours de mini-golf 18 trous pour toute la famille. Ouvert tous les jours en saison.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/parc+aquatique+vendee/@46.7167,-1.9500,30z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1561459284-4e9f17229a93?w=600') center/cover;">
+                    <div class="activity-icon">🌊</div>
+                    <h3>Parc Aquatique</h3>
+                    <p><strong>O'Gliss Park</strong> - 15 km</p>
+                    <p>Toboggans géants, piscines à vagues, rivière sauvage. Fun garanti pour toute la famille!</p>
+                </a>
+                <a href="https://www.google.com/maps/search/parc+attractions+vendee/@46.7167,-1.9500,50z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1594818379496-da1e345b0ded?w=600') center/cover;">
+                    <div class="activity-icon">🎡</div>
+                    <h3>Puy du Fou</h3>
+                    <p><strong>Parc d'attractions</strong> - 80 km</p>
+                    <p>Parc à thème historique mondialement reconnu. Spectacles époustouflants!</p>
+                </a>
+                <a href="https://www.google.com/maps/search/location+vélos/@46.7167,-1.9500,13z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1571333250630-f0230c320b6d?w=600') center/cover;">
+                    <div class="activity-icon">🚴</div>
+                    <h3>Vélo</h3>
+                    <p><strong>Pistes cyclables</strong> - À proximité</p>
+                    <p>Réseau de pistes cyclables le long de la côte vendéenne. Location de vélos en ville.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/karting+saint+hilaire+de+riez/@46.7167,-1.9500,13z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1565694838055-da02e64d4537?w=600') center/cover;">
+                    <div class="activity-icon">🏎️</div>
+                    <h3>Karting</h3>
+                    <p><strong>Circuit de karting</strong> - 5 km</p>
+                    <p>Sensations fortes garanties sur piste outdoor. Sessions pour adultes et enfants.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/Port+Olona+Les+Sables-d'Olonne/@46.4963,-1.7895,15z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600') center/cover;">
+                    <div class="activity-icon">⛵</div>
+                    <h3>Port Olona</h3>
+                    <p><strong>Les Sables-d'Olonne</strong> - 25 km</p>
+                    <p>Port de plaisance, départ du Vendée Globe, restaurants et boutiques.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/école+surf+saint+hilaire+de+riez/@46.7167,-1.9500,13z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=600') center/cover;">
+                    <div class="activity-icon">🏄</div>
+                    <h3>Surf & Paddle</h3>
+                    <p><strong>École de surf</strong> - 2 km</p>
+                    <p>Cours de surf, paddle, kayak. Location de matériel disponible sur la plage.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/marché/@46.7167,-1.9500,13z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600') center/cover;">
+                    <div class="activity-icon">🛍️</div>
+                    <h3>Marché Local</h3>
+                    <p><strong>Centre-ville</strong> - 2 km</p>
+                    <p>Marché traditionnel vendéen tous les mercredis et samedis matins. Produits locaux frais.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/Île+de+Noirmoutier/@46.9976,-2.2425,12z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600') center/cover;">
+                    <div class="activity-icon">🏝️</div>
+                    <h3>Île de Noirmoutier</h3>
+                    <p><strong>Passage du Gois</strong> - 45 km</p>
+                    <p>Île accessible par pont ou par le célèbre passage du Gois submersible à marée basse.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/restaurants+saint+hilaire/@46.7167,-1.9500,13z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600') center/cover;">
+                    <div class="activity-icon">🍽️</div>
+                    <h3>Restaurants</h3>
+                    <p><strong>Centre-ville</strong> - 1-3 km</p>
+                    <p>Crêperies, restaurants de fruits de mer, pizzerias. Spécialités vendéennes authentiques.</p>
+                </a>
+                <a href="https://www.google.com/maps/search/zoo+vendee/@46.7167,-1.9500,30z" target="_blank" class="activity-card activity-link" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=600') center/cover;">
+                    <div class="activity-icon">🦒</div>
+                    <h3>Zoo & Parcs</h3>
+                    <p><strong>Plusieurs options</strong> - 20-40 km</p>
+                    <p>Zoo des Sables, Parc animalier de La Vallée... Découvrez la faune locale et exotique!</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Infos Pratiques -->
+    <section id="infos-pratiques" class="section">
+        <div class="container">
+            <h2>ℹ️ Informations Pratiques</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🧺</div>
+                    <h3>Laverie</h3>
+                    <p><strong>Laverie Automatique</strong></p>
+                    <p>📍 Centre-ville de Saint-Hilaire-de-Riez (~2 km)</p>
+                    <p>⏰ 7j/7 - 7h à 21h</p>
+                    <p>💳 Paiement par carte ou pièces</p>
+                    <p class="tip">Lavage + séchage environ 1h30</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🥖</div>
+                    <h3>Distributeur de Pain</h3>
+                    <p><strong>Pain Frais de la boulangerie du centre</strong></p>
+                    <p>⏰ Service 24h/24</p>
+                    <p>💳 Paiement CB uniquement</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🗑️</div>
+                    <h3>Poubelles</h3>
+                    <img src="images/poubelles.jpg" alt="Container à poubelles" style="width: 100%; border-radius: 10px; margin-bottom: 1rem;">
+                    <p><strong>Container à accès sécurisé</strong></p>
+                    <p>📍 11 rue des Galées (à 100m de la résidence)</p>
+                    <p>🔑 <strong>IMPORTANT : Utilisez la carte fournie pour ouvrir le container</strong></p>
+                    <div class="waste-types">
+                        <div class="waste-type">
+                            <span class="waste-icon" style="background: #FFD700;">♻️</span>
+                            <span>Jaune : Recyclables</span>
+                        </div>
+                        <div class="waste-type">
+                            <span class="waste-icon" style="background: #228B22;">🗑️</span>
+                            <span>Vert : Ordures ménagères</span>
+                        </div>
+                        <div class="waste-type">
+                            <span class="waste-icon" style="background: #4169E1;">🍾</span>
+                            <span>Bleu : Verre</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🛒</div>
+                    <h3>Commerces</h3>
+                    <p><strong>Proximité</strong></p>
+                    <p>🏪 Supermarché : 300 m</p>
+                    <p>💊 Pharmacie : 300 km</p>
+                    <p>🏥 Médecin : 2 km</p>
+                    <p>⛽ Station service : 2,5 km</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🚗</div>
+                    <h3>Parking</h3>
+                    <p><strong>Place privée n°212</strong></p>
+                    <p>📍 Place réservée à proximité immédiate</p>
+                    <p>🅿️ Votre place de parking : <strong>n°212</strong></p>
+                    <p class="tip">Parking gratuit également disponible près des plages</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <h3>Mon Hôte</h3>
+                    <p>💁‍♂️ Stephane : 06 06 77 06 74</p>
+                    <h3>Urgences</h3>
+                    <p>🚨 SAMU : 15</p>
+                    <p>🚓 Police : 17</p>
+                    <p>🚒 Pompiers : 18</p>
+                    <p>🇪🇺 Urgences UE : 112</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Checkout -->
+    <section id="checkout" class="section">
+        <div class="container">
+            <h2>🔑 Instructions de Départ</h2>
+            <div class="checkout-container">
+                <div class="checkout-header">
+                    <p class="checkout-time">⏰ Heure de départ : <strong>11h00 maximum</strong></p>
+                </div>
+                <div class="checkout-steps">
+                    <div class="checkout-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Nettoyage du logement</h3>
+                            <ul>
+                                <li>Jeter les poubelles dans les containers (avec la carte d'accès)</li>
+                                <li>Regrouper les draps et serviettes usagés</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="checkout-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Vérifications avant départ</h3>
+                            <ul>
+                                <li>Éteindre tous les appareils électriques</li>
+                                <li>Fermer tous les robinets</li>
+                                <li>Fermer toutes les fenêtres</li>
+                                <li>Vérifier qu'aucun objet personnel n'est oublié</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="checkout-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Remise des clés</h3>
+                            <ul>
+                                <li>Redéposer les clés dans la boite à clefs</li>
+                                <li>N'oubliez pas la carte d'accès aux containers</li>
+                                <li>Fermer la porte à clé en partant</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkout-footer">
+                    <div class="thank-you">
+                        <h3>Merci pour votre séjour ! 🙏</h3>
+                        <p>Nous espérons vous revoir bientôt à Saint-Hilaire-de-Riez</p>
+                        <p class="review-request">N'oubliez pas de laisser un avis ⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Multimédia -->
+    <section id="multimedia" class="section">
+        <div class="container">
+            <h2>📺 Divertissement</h2>
+            <div class="media-grid">
+                <a href="https://www.netflix.com" target="_blank" class="media-card netflix">
+                    <div class="media-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+                    </div>
+                    <h3>Netflix</h3>
+                    <p>Films et séries en streaming</p>
+                </a>
+                <a href="https://www.disneyplus.com" target="_blank" class="media-card disney">
+                    <div class="media-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+">
+                    </div>
+                    <h3>Disney+</h3>
+                    <p>Univers Disney, Pixar, Marvel, Star Wars</p>
+                </a>
+                <a href="https://www.primevideo.com" target="_blank" class="media-card prime">
+                    <div class="media-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" alt="Prime Video">
+                    </div>
+                    <h3>Prime Video</h3>
+                    <p>Amazon Prime Video</p>
+                </a>
+                <a href="https://orange.fr" target="_blank" class="media-card orange">
+                    <div class="media-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#FF7900"/>
+                        </svg>
+                    </div>
+                    <h3>Orange TV</h3>
+                    <p>Chaînes TV en direct</p>
+                </a>
+                <a href="#" class="media-card tv" onclick="return false;">
+                    <div class="media-icon">📺</div>
+                    <h3>TV Classique</h3>
+                    <p>Chaînes TNT et câble</p>
+                    <div class="tv-channels">
+                        <span class="channel-badge">TF1</span>
+                        <span class="channel-badge">France 2</span>
+                        <span class="channel-badge">M6</span>
+                        <span class="channel-badge">+</span>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/tv" target="_blank" class="media-card youtube">
+                    <div class="media-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="100" fill="#FF0000" rx="15"/>
+                            <polygon points="40,30 40,70 70,50" fill="white"/>
+                        </svg>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>Vidéos en streaming</p>
+                </a>
+            </div>
+            <div class="media-info">
+                <p class="info-text">💡 <strong>Astuce :</strong> Utilisez la télécommande de la TV pour naviguer entre les applications</p>
+                <p class="info-text">🎮 Certaines applications nécessitent un compte personnel pour se connecter</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
