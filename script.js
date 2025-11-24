@@ -38,50 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
-
-// Fonction pour générer les QR codes
-function generateQRCodes() {
-    // Génération du QR Code pour accès au site (page d'accueil)
-    const webappUrl = "https://wonderful-rock-04872af03.3.azurestaticapps.net";
-    const qrHomeElement = document.getElementById("qrcode-home");
-    if (qrHomeElement && !qrHomeElement.hasChildNodes()) {
-        new QRCode(qrHomeElement, {
-            text: webappUrl,
-            width: 180,
-            height: 180,
-            colorDark: "#2563eb",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.M
-        });
-    }
-    
-    // Génération du QR Code WiFi
-    // Les variables sont définies dans config.js
-    const wifiSSID = WIFI_SSID;
-    const wifiPassword = WIFI_PASSWORD;
-    const wifiSecurity = WIFI_SECURITY;
-    
-    // Mettre à jour l'affichage des informations WiFi
-    document.getElementById('wifi-ssid').textContent = wifiSSID;
-    document.getElementById('wifi-password').textContent = wifiPassword;
-    
-    // Générer le QR code WiFi
-    // Format: WIFI:T:WPA;S:SSID;P:password;;
-    const wifiString = `WIFI:T:${wifiSecurity};S:${wifiSSID};P:${wifiPassword};;`;
-    
-    const qrWifiElement = document.getElementById("qrcode");
-    if (qrWifiElement && !qrWifiElement.hasChildNodes()) {
-        new QRCode(qrWifiElement, {
-            text: wifiString,
-            width: 256,
-            height: 256,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-    }
-}
     
     // Animation des cartes au scroll
     const observerOptions = {
@@ -208,6 +164,49 @@ function generateQRCodes() {
         });
     });
 });
+
+// Fonction pour générer les QR codes
+function generateQRCodes() {
+    // Génération du QR Code pour accès au site (page d'accueil)
+    const webappUrl = "https://wonderful-rock-04872af03.3.azurestaticapps.net";
+    const qrHomeElement = document.getElementById("qrcode-home");
+    if (qrHomeElement && !qrHomeElement.hasChildNodes()) {
+        new QRCode(qrHomeElement, {
+            text: webappUrl,
+            width: 180,
+            height: 180,
+            colorDark: "#2563eb",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    }
+    
+    // Génération du QR Code WiFi
+    // Les variables sont définies dans config.js
+    const wifiSSID = WIFI_SSID;
+    const wifiPassword = WIFI_PASSWORD;
+    const wifiSecurity = WIFI_SECURITY;
+    
+    // Mettre à jour l'affichage des informations WiFi
+    document.getElementById('wifi-ssid').textContent = wifiSSID;
+    document.getElementById('wifi-password').textContent = wifiPassword;
+    
+    // Générer le QR code WiFi
+    // Format: WIFI:T:WPA;S:SSID;P:password;;
+    const wifiString = `WIFI:T:${wifiSecurity};S:${wifiSSID};P:${wifiPassword};;`;
+    
+    const qrWifiElement = document.getElementById("qrcode");
+    if (qrWifiElement && !qrWifiElement.hasChildNodes()) {
+        new QRCode(qrWifiElement, {
+            text: wifiString,
+            width: 256,
+            height: 256,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+}
 
 // Animation CSS additionnelle
 const style = document.createElement('style');
