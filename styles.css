@@ -23,7 +23,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: var(--dark);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #007FFF 0%, #00BFFF 100%);
     overflow-x: hidden;
 }
 
@@ -39,12 +39,13 @@ html {
     right: 0;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    box-shadow: var(--shadow);
+    box-shadow: 0 2px 20px rgba(0, 127, 255, 0.1);
     z-index: 1000;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.2);
 }
 
 .nav-brand {
@@ -81,6 +82,27 @@ html {
     padding: 100px 2rem 2rem;
     display: none;
     animation: fadeIn 0.5s ease;
+    position: relative;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+}
+
+.section::after {
+    content: '🌊';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    opacity: 0.15;
+    pointer-events: none;
 }
 
 .section.active {
@@ -109,6 +131,20 @@ h2 {
     color: white;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
+    border-radius: 2px;
 }
 
 /* Hero Section */
@@ -144,7 +180,8 @@ h2 {
 .hero-background img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     animation: slowZoom 20s ease-in-out infinite alternate;
 }
 
@@ -471,7 +508,7 @@ h2 {
     background: white;
     border-radius: 15px;
     padding: 2rem;
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 20px rgba(0, 127, 255, 0.15);
     transition: all 0.3s ease;
     text-decoration: none;
     display: block;
@@ -479,11 +516,28 @@ h2 {
     position: relative;
     overflow: hidden;
     min-height: 200px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.activity-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0, 127, 255, 0.3), rgba(255, 215, 0, 0.3), rgba(0, 127, 255, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.activity-card:hover::before {
+    opacity: 1;
 }
 
 .activity-card:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 8px 30px rgba(0, 127, 255, 0.25);
     cursor: pointer;
 }
 
