@@ -383,6 +383,10 @@ h2::after {
     margin: 0 auto;
 }
 
+#qrcode-home canvas {
+    display: none !important;
+}
+
 .qr-label-home {
     margin-top: 0.8rem;
     font-size: 0.95rem;
@@ -491,6 +495,15 @@ h2::after {
     border-radius: 15px;
     box-shadow: var(--shadow);
     line-height: 0;
+}
+
+#qrcode canvas {
+    display: none !important;
+}
+
+#qrcode img {
+    display: block;
+    margin: 0 auto;
 }
 
 .qr-label {
