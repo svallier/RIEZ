@@ -174,7 +174,9 @@ function generateQRCodes() {
     // Génération du QR Code pour accès au site (page d'accueil)
     const webappUrl = "https://wonderful-rock-04872af03.3.azurestaticapps.net";
     const qrHomeElement = document.getElementById("qrcode-home");
-    if (qrHomeElement && !qrHomeElement.hasChildNodes()) {
+    if (qrHomeElement) {
+        // Vider le contenu avant de générer un nouveau QR code
+        qrHomeElement.innerHTML = '';
         new QRCode(qrHomeElement, {
             text: webappUrl,
             width: 180,
@@ -200,7 +202,9 @@ function generateQRCodes() {
     const wifiString = `WIFI:T:${wifiSecurity};S:${wifiSSID};P:${wifiPassword};;`;
     
     const qrWifiElement = document.getElementById("qrcode");
-    if (qrWifiElement && !qrWifiElement.hasChildNodes()) {
+    if (qrWifiElement) {
+        // Vider le contenu avant de générer un nouveau QR code
+        qrWifiElement.innerHTML = '';
         new QRCode(qrWifiElement, {
             text: wifiString,
             width: 256,
