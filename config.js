@@ -2,7 +2,7 @@
 // MODIFIEZ LES INFORMATIONS ICI
 
 // Nom du voyageur actuel (laissez vide "" si aucun voyageur)
-const GUEST_NAME = "Stephane";
+const GUEST_NAME = "Stephane V.";
 
 // Configuration WiFi
 const WIFI_SSID = "LesMouettes";           // À MODIFIER
