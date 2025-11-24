@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Récupération de la météo pour Saint-Hilaire-de-Riez
     fetchWeather();
     
+    // Attendre que QRCode.js soit chargé avant de générer les QR codes
+    if (typeof QRCode !== 'undefined') {
+        generateQRCodes();
+    } else {
+        window.addEventListener('load', generateQRCodes);
+    }
+    
     // Navigation
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
@@ -31,17 +38,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+});
+
+// Fonction pour générer les QR codes
+function generateQRCodes() {
     // Génération du QR Code pour accès au site (page d'accueil)
     const webappUrl = "https://wonderful-rock-04872af03.3.azurestaticapps.net";
-    new QRCode(document.getElementById("qrcode-home"), {
-        text: webappUrl,
-        width: 180,
-        height: 180,
-        colorDark: "#2563eb",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.M
-    });
+    const qrHomeElement = document.getElementById("qrcode-home");
+    if (qrHomeElement && !qrHomeElement.hasChildNodes()) {
+        new QRCode(qrHomeElement, {
+            text: webappUrl,
+            width: 180,
+            height: 180,
+            colorDark: "#2563eb",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+    }
     
     // Génération du QR Code WiFi
     // Les variables sont définies dans config.js
@@ -57,14 +70,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Format: WIFI:T:WPA;S:SSID;P:password;;
     const wifiString = `WIFI:T:${wifiSecurity};S:${wifiSSID};P:${wifiPassword};;`;
     
-    new QRCode(document.getElementById("qrcode"), {
-        text: wifiString,
-        width: 256,
-        height: 256,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-    });
+    const qrWifiElement = document.getElementById("qrcode");
+    if (qrWifiElement && !qrWifiElement.hasChildNodes()) {
+        new QRCode(qrWifiElement, {
+            text: wifiString,
+            width: 256,
+            height: 256,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+}
     
     // Animation des cartes au scroll
     const observerOptions = {
