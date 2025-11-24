@@ -10,7 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof QRCode !== 'undefined') {
         generateQRCodes();
     } else {
-        window.addEventListener('load', generateQRCodes);
+        window.addEventListener('load', function() {
+            if (typeof QRCode !== 'undefined') {
+                generateQRCodes();
+            }
+        });
     }
     
     // Navigation
