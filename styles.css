@@ -365,6 +365,7 @@ h2::after {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
     border-top: 2px solid rgba(37, 99, 235, 0.2);
+    text-align: center;
 }
 
 #qrcode-home {
@@ -373,6 +374,7 @@ h2::after {
     background: white;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    line-height: 0;
 }
 
 #qrcode-home canvas,
@@ -488,6 +490,7 @@ h2::after {
     background: white;
     border-radius: 15px;
     box-shadow: var(--shadow);
+    line-height: 0;
 }
 
 .qr-label {
@@ -939,13 +942,14 @@ h2::after {
     }
     
     .qr-code-home #qrcode-home {
-        width: 150px !important;
-        height: 150px !important;
+        padding: 0.5rem;
     }
     
+    .qr-code-home #qrcode-home canvas,
     .qr-code-home #qrcode-home img {
-        width: 150px !important;
-        height: 150px !important;
+        width: 140px !important;
+        height: 140px !important;
+        display: block !important;
     }
     
     .wifi-card {
@@ -954,13 +958,15 @@ h2::after {
     }
     
     #qrcode {
-        width: 200px !important;
-        height: 200px !important;
+        display: inline-block !important;
+        line-height: 0;
     }
     
+    #qrcode canvas,
     #qrcode img {
         width: 200px !important;
         height: 200px !important;
+        display: block !important;
     }
     
     .gallery-grid,
