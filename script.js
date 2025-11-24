@@ -186,34 +186,6 @@ function generateQRCodes() {
             correctLevel: QRCode.CorrectLevel.M
         });
     }
-    
-    // Génération du QR Code WiFi
-    // Les variables sont définies dans config.js
-    const wifiSSID = WIFI_SSID;
-    const wifiPassword = WIFI_PASSWORD;
-    const wifiSecurity = WIFI_SECURITY;
-    
-    // Mettre à jour l'affichage des informations WiFi
-    document.getElementById('wifi-ssid').textContent = wifiSSID;
-    document.getElementById('wifi-password').textContent = wifiPassword;
-    
-    // Générer le QR code WiFi
-    // Format: WIFI:T:WPA;S:SSID;P:password;;
-    const wifiString = `WIFI:T:${wifiSecurity};S:${wifiSSID};P:${wifiPassword};;`;
-    
-    const qrWifiElement = document.getElementById("qrcode");
-    if (qrWifiElement) {
-        // Vider le contenu avant de générer un nouveau QR code
-        qrWifiElement.innerHTML = '';
-        new QRCode(qrWifiElement, {
-            text: wifiString,
-            width: 256,
-            height: 256,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
-    }
 }
 
 // Animation CSS additionnelle
